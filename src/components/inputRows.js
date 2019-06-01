@@ -84,6 +84,10 @@ class InputRows extends React.Component {
     this.setState({ candidates: newCandidates, results: calculatedResults });
   };
 
+  reset = () => {
+    this.setState({ candidates: [[]], results: [[]] });
+  };
+
   render() {
     return (
       <div>
@@ -97,9 +101,8 @@ class InputRows extends React.Component {
               />
             );
           })}
-          <button onClick={this.handleNextBox} style={{ float: "left" }}>
-            +
-          </button>
+          <button onClick={this.handleNextBox}>+</button>
+          <button onClick={this.reset}>Reset</button>
         </div>
         <div style={{ clear: "both" }}>
           <Output results={this.state.results} style={{ float: "none" }} />
