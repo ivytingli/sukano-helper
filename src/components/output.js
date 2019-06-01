@@ -5,11 +5,13 @@ const Output = props => {
     <div>
       {props.results.map((result, ind) => (
         <table key={ind}>
-          <tr>
-            {result.map(candidate => (
-              <td>{candidate}</td>
-            ))}
-          </tr>
+          <tbody>
+            <tr>
+              {result.map((candidate, candInd) => (
+                <td key={candInd}>{candidate}</td>
+              ))}
+            </tr>
+          </tbody>
         </table>
       ))}
     </div>

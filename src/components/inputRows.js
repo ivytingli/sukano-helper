@@ -12,6 +12,17 @@ class InputRows extends React.Component {
     };
   }
 
+  // ex input: newResults = [[1, 3], [2, 3]], totalCand = 2, returns: [[1,2], [3]]
+  updateCandidates = (newResults, totalCand) => {
+    let updatedCandidates = [];
+    for (let ind = 0; ind < totalCand; ind++) {
+      let box = new Set(newResults.map(combo => combo[ind]));
+      updatedCandidates.push(Array.from(box));
+    }
+    console.log(updatedCandidates);
+    return updatedCandidates;
+  };
+
   calculateResults = (currResults, candidates) => {
     let newResults = [];
     if (currResults.length === 0) {
@@ -22,8 +33,7 @@ class InputRows extends React.Component {
         newResults = newResults.concat(calculatedResult);
       });
     }
-    console.log(newResults);
-    this.setState({ results: newResults });
+    return newResults;
   };
 
   calculateByBox = (combo, candidates) => {
@@ -57,16 +67,18 @@ class InputRows extends React.Component {
 
   handleNextBox = () => {
     let candidates = this.state.candidates;
-    if (candidates.length === 9) {
-      return;
-    } else {
-      candidates.push([]);
-      this.setState(candidates);
-      this.calculateResults(
-        this.state.results,
-        candidates[candidates.length - 2]
-      );
+    let calculatedResults = this.calculateResults(
+      this.state.results,
+      candidates[candidates.length - 1]
+    );
+    let newCandidates = this.updateCandidates(
+      calculatedResults,
+      candidates.length
+    );
+    if (candidates.length !== 9) {
+      newCandidates.push([]);
     }
+    this.setState({ candidates: newCandidates, results: calculatedResults });
   };
 
   render() {
