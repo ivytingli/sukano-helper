@@ -26,7 +26,11 @@ const displayNumber = (value, arr) => {
 
 const InputBox = props => {
   return (
-    <div style={outlineStyle} tabIndex="0" onKeyDown={props.handleKeyPress}>
+    <div
+      style={outlineStyle}
+      tabIndex={props.canFocus}
+      onKeyDown={props.handleKeyPress}
+    >
       <div style={numberGridStyle}>{displayNumber(1, props.candidates)}</div>
       <div style={numberGridStyle}>{displayNumber(2, props.candidates)}</div>
       <div style={numberGridStyle}>{displayNumber(3, props.candidates)}</div>

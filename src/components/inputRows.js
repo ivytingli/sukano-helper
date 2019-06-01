@@ -98,6 +98,7 @@ class InputRows extends React.Component {
                 key={ind}
                 candidates={box}
                 handleKeyPress={e => this.handleKeyPress(e, ind)}
+                canFocus={ind === this.state.candidates.length - 1 ? "1" : ""}
               />
             );
           })}

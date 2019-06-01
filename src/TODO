@@ -1,5 +1,5 @@
 Bugs/Features:
-    ☐ Stop input ability for box after a box has been submitted
+    ✔ Stop input ability for box after a box has been submitted @done(19-06-01 16:37)
     ✔ Add reset button @done(19-06-01 15:48)
     ☐ Add delete button for each row
         ☐ Delete functionality
