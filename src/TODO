@@ -1,0 +1,8 @@
+Bugs/Features:
+    ☐ Stop input ability for box after a box has been submitted
+    ☐ Add reset button
+    ☐ Add delete button for each row
+        ☐ Delete functionality
+        ☐ Update candidates after delete
+    ☐ Show sums
+    ☐ Add eliminate by conditions
