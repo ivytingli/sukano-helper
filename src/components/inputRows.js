@@ -19,7 +19,6 @@ class InputRows extends React.Component {
       let box = new Set(newResults.map(combo => combo[ind]));
       updatedCandidates.push(Array.from(box));
     }
-    console.log(updatedCandidates);
     return updatedCandidates;
   };
 
@@ -88,6 +87,18 @@ class InputRows extends React.Component {
     this.setState({ candidates: [[]], results: [[]] });
   };
 
+  handleRemoveRow = (e, ind) => {
+    let results = [...this.state.results];
+    results.splice(ind, 1);
+    let candidates = this.updateCandidates(
+      results,
+      this.state.candidates.length - 1
+    );
+    candidates.push([]);
+    //console.log(candidates);
+    this.setState({ results, candidates });
+  };
+
   render() {
     return (
       <div>
@@ -106,7 +117,11 @@ class InputRows extends React.Component {
           <button onClick={this.reset}>Reset</button>
         </div>
         <div style={{ clear: "both" }}>
-          <Output results={this.state.results} style={{ float: "none" }} />
+          <Output
+            results={this.state.results}
+            style={{ float: "none" }}
+            handleDelete={this.handleRemoveRow}
+          />
         </div>
       </div>
     );
