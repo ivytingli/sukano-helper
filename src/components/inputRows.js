@@ -65,7 +65,7 @@ class InputRows extends React.Component {
   };
 
   handleNextBox = () => {
-    let candidates = this.state.candidates;
+    let candidates = [...this.state.candidates];
     if (candidates[candidates.length - 1].length === 0) {
       return;
     }
