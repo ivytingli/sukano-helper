@@ -7,6 +7,7 @@ Bugs/Features:
     ✔ Show sums @done(19-06-01 20:16)
     ☐ Add eliminate by conditions
         ✔ Add filter management @done(19-06-02 22:23)
-        ☐ Filter logic for sum
-        ☐ Filter logic for number
+        ✔ Filter logic for sum @done(19-06-03 16:31)
+        ✔ Filter logic for number @done(19-06-03 16:31)
+        ☐ Execute logic for list of results based on list of filters
     ☐ Empty boxes if delete all possibilities

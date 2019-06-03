@@ -17,6 +17,43 @@ class InputRows extends React.Component {
     };
   }
 
+  // [2, 3, 4], 2 => {pass: true, rest: [3, 4]}
+  singleNumberFilterLogic = (arr, value) => {
+    let clonedArr = [...arr];
+    let status = {};
+    status.pass = clonedArr[0] === value;
+    clonedArr.shift();
+    status.rest = clonedArr;
+    return status;
+  };
+
+  // [2, 3, 4], 11 => {pass: true, rest: []}
+  // [2, 3, 4], 5 => {pass: true, rest: [4]}
+  // [3, 5], 3 => {pass: false, rest: [5]}
+  singleSumFilterLogic = (arr, value) => {
+    let clonedArr = [...arr];
+    let status = {};
+    let acc = 0;
+    for (let i = 0; i < arr.length; i++) {
+      acc += arr[i];
+      if (acc === value) {
+        status.pass = i > 0;
+        clonedArr.shift();
+        status.rest = clonedArr;
+        break;
+      }
+      if (acc > value) {
+        status = { pass: false, rest: [] };
+        break;
+      } else {
+        status.pass = true;
+        clonedArr.shift();
+        status.rest = clonedArr;
+      }
+    }
+    return status;
+  };
+
   handleFilterType = e => {
     this.setState({ currFilterType: e.target.value });
   };
@@ -109,7 +146,7 @@ class InputRows extends React.Component {
     this.setState({ candidates: newCandidates, results: calculatedResults });
   };
 
-  reset = () => {
+  resetCandidates = () => {
     this.setState({ candidates: [[]], results: [[]] });
   };
 
@@ -145,7 +182,7 @@ class InputRows extends React.Component {
             );
           })}
           <button onClick={this.handleNextBox}>+</button>
-          <button onClick={this.reset}>Reset</button>
+          <button onClick={this.resetCandidates}>Reset candidates</button>
         </div>
         <div style={{ clear: "both" }}>
           <FilterInput
