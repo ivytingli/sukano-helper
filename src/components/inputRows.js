@@ -48,10 +48,43 @@ class InputRows extends React.Component {
       } else {
         status.pass = true;
         clonedArr.shift();
-        status.rest = clonedArr;
+        i === arr.length - 1 ? (status.rest = []) : (status.rest = clonedArr);
       }
     }
     return status;
+  };
+
+  // combo, filters => {pass: t/f, rest: array}
+  handleSingleFilter = (combo, filter) => {
+    let result;
+    if (filter[0] === "sum") {
+      result = this.singleSumFilterLogic(combo, filter[1]);
+    } else {
+      result = this.singleNumberFilterLogic(combo, filter[1]);
+    }
+    return result;
+  };
+
+  handleFilterForSingleCombo = (combo, filters) => {
+    let result = { pass: true, rest: combo };
+    for (let ind = 0; ind < filters.length; ind++) {
+      if (!result.pass || result.rest.length === 0) {
+        break;
+      }
+      result = this.handleSingleFilter(result.rest, filters[ind]);
+    }
+    return result.pass;
+  };
+
+  eliminateByFilter = (results, filters, candidates) => {
+    let newResults = [];
+    results.forEach(combo => {
+      if (this.handleFilterForSingleCombo(combo, [...filters])) {
+        newResults.push(combo);
+      }
+    });
+    let newCandidates = this.updateCandidates(newResults, candidates.length);
+    this.setState({ results: newResults, candidates: newCandidates });
   };
 
   handleFilterType = e => {
@@ -195,6 +228,9 @@ class InputRows extends React.Component {
           <FilterTable
             filters={this.state.filters}
             handleDelete={this.handleRemoveFilterRow}
+            candidates={this.state.candidates}
+            results={this.state.results}
+            handleEliminate={this.eliminateByFilter}
           />
         </div>
         <div style={{ clear: "both" }}>

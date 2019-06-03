@@ -23,7 +23,13 @@ const FilterTable = props => {
           })}
         </tbody>
       </table>
-      <button>Eliminate using filters</button>
+      <button
+        onClick={() =>
+          props.handleEliminate(props.results, props.filters, props.candidates)
+        }
+      >
+        Eliminate using filters
+      </button>
     </div>
   );
 };

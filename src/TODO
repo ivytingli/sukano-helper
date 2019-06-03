@@ -5,9 +5,12 @@ Bugs/Features:
         ✔ Delete functionality @done(19-06-01 17:40)
         ✔ Update candidates after delete @done(19-06-01 17:40)
     ✔ Show sums @done(19-06-01 20:16)
-    ☐ Add eliminate by conditions
+    ✔ Add eliminate by conditions @done(19-06-03 18:11)
         ✔ Add filter management @done(19-06-02 22:23)
         ✔ Filter logic for sum @done(19-06-03 16:31)
         ✔ Filter logic for number @done(19-06-03 16:31)
-        ☐ Execute logic for list of results based on list of filters
+        ✔ Execute logic for list of results based on list of filters @done(19-06-03 18:11)
+    ☐ Refactor code
+    ☐ Styling
     ☐ Empty boxes if delete all possibilities
+    ☐ Fix empty object added to candidates when "eliminate using filters" is pressed
