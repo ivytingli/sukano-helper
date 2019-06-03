@@ -4,11 +4,13 @@ const FilterTable = props => {
   return (
     <div>
       <table>
-        <tr>
-          <th>Filter type</th>
-          <th>Filter value</th>
-          <th />
-        </tr>
+        <thead>
+          <tr>
+            <th>Filter type</th>
+            <th>Filter value</th>
+            <th />
+          </tr>
+        </thead>
         <tbody>
           {props.filters.map((filter, ind) => {
             return (
