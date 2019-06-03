@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import InputRows from "./components/inputRows";
+import Helper from "./components/helper";
 
 /*
       <header className="App-header">
@@ -22,7 +22,7 @@ import InputRows from "./components/inputRows";
 function App() {
   return (
     <div className="App">
-      <InputRows />
+      <Helper />
     </div>
   );
 }

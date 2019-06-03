@@ -1,10 +1,10 @@
 import React from "react";
-import InputBox from "./inputBox";
+import InputRow from "./inputRow";
 import Output from "./output";
 import FilterInput from "./filterInput";
 import FilterTable from "./filterTable";
 
-class InputRows extends React.Component {
+class Helper extends React.Component {
   constructor(props) {
     super(props);
 
@@ -206,20 +206,12 @@ class InputRows extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          {this.state.candidates.map((box, ind) => {
-            return (
-              <InputBox
-                key={ind}
-                candidates={box}
-                handleKeyPress={e => this.handleKeyPress(e, ind)}
-                canFocus={ind === this.state.candidates.length - 1 ? "1" : ""}
-              />
-            );
-          })}
-          <button onClick={this.handleNextBox}>+</button>
-          <button onClick={this.resetCandidates}>Reset candidates</button>
-        </div>
+        <InputRow
+          candidates={this.state.candidates}
+          handleKeyPress={this.handleKeyPress}
+          handleNextBox={this.handleNextBox}
+          resetCandidates={this.resetCandidates}
+        />
         <div style={{ clear: "both" }}>
           <FilterInput
             currFilterType={this.state.currFilterType}
@@ -248,4 +240,4 @@ class InputRows extends React.Component {
   }
 }
 
-export default InputRows;
+export default Helper;
