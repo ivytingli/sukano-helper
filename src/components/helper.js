@@ -83,10 +83,11 @@ class Helper extends React.Component {
         newResults.push(combo);
       }
     });
-    let newCandidates = this.updateCandidates(
-      newResults,
-      candidates.length - 1
-    );
+    let candidateLength;
+    candidates.length === 9
+      ? (candidateLength = 9)
+      : (candidateLength = candidates.length - 1);
+    let newCandidates = this.updateCandidates(newResults, candidateLength);
     this.setState({ results: newResults, candidates: newCandidates });
   };
 
