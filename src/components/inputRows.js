@@ -1,6 +1,8 @@
 import React from "react";
 import InputBox from "./inputBox";
 import Output from "./output";
+import FilterInput from "./filterInput";
+import FilterTable from "./filterTable";
 
 class InputRows extends React.Component {
   constructor(props) {
@@ -8,9 +10,33 @@ class InputRows extends React.Component {
 
     this.state = {
       candidates: [[]],
-      results: [[]]
+      results: [[]],
+      filters: [],
+      currFilterType: "sum",
+      currFilterValue: ""
     };
   }
+
+  handleFilterType = e => {
+    this.setState({ currFilterType: e.target.value });
+  };
+
+  handleFilterValue = e => {
+    this.setState({ currFilterValue: Number(e.target.value) });
+  };
+
+  handleAddFilter = e => {
+    if (this.state.currFilterValue === "") {
+      return;
+    }
+    let filters = [...this.state.filters];
+    filters.push([this.state.currFilterType, this.state.currFilterValue]);
+    this.setState({
+      filters: filters,
+      currFilterType: "sum",
+      currFilterValue: ""
+    });
+  };
 
   // ex input: newResults = [[1, 3], [2, 3]], totalCand = 2, returns: [[1,2], [3]]
   updateCandidates = (newResults, totalCand) => {
@@ -95,8 +121,13 @@ class InputRows extends React.Component {
       this.state.candidates.length - 1
     );
     candidates.push([]);
-    //console.log(candidates);
     this.setState({ results, candidates });
+  };
+
+  handleRemoveFilterRow = (e, ind) => {
+    let filters = [...this.state.filters];
+    filters.splice(ind, 1);
+    this.setState({ filters });
   };
 
   render() {
@@ -115,6 +146,19 @@ class InputRows extends React.Component {
           })}
           <button onClick={this.handleNextBox}>+</button>
           <button onClick={this.reset}>Reset</button>
+        </div>
+        <div style={{ clear: "both" }}>
+          <FilterInput
+            currFilterType={this.state.currFilterType}
+            currFilterValue={this.state.currFilterValue}
+            handleFilterType={this.handleFilterType}
+            handleFilterValue={this.handleFilterValue}
+            handleAddFilter={this.handleAddFilter}
+          />
+          <FilterTable
+            filters={this.state.filters}
+            handleDelete={this.handleRemoveFilterRow}
+          />
         </div>
         <div style={{ clear: "both" }}>
           <Output
