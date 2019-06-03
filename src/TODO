@@ -12,5 +12,4 @@ Bugs/Features:
         ✔ Execute logic for list of results based on list of filters @done(19-06-03 18:11)
     ☐ Refactor code
     ☐ Styling
-    ☐ Empty boxes if delete all possibilities
-    ☐ Fix empty object added to candidates when "eliminate using filters" is pressed
+    ✔ Fix empty object added to candidates when "eliminate using filters" is pressed @done(19-06-03 18:50)

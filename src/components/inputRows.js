@@ -83,7 +83,10 @@ class InputRows extends React.Component {
         newResults.push(combo);
       }
     });
-    let newCandidates = this.updateCandidates(newResults, candidates.length);
+    let newCandidates = this.updateCandidates(
+      newResults,
+      candidates.length - 1
+    );
     this.setState({ results: newResults, candidates: newCandidates });
   };
 
@@ -114,6 +117,9 @@ class InputRows extends React.Component {
     for (let ind = 0; ind < totalCand; ind++) {
       let box = new Set(newResults.map(combo => combo[ind]));
       updatedCandidates.push(Array.from(box));
+    }
+    if (updatedCandidates.length !== 9) {
+      updatedCandidates.push([]);
     }
     return updatedCandidates;
   };
@@ -173,9 +179,6 @@ class InputRows extends React.Component {
       calculatedResults,
       candidates.length
     );
-    if (candidates.length !== 9) {
-      newCandidates.push([]);
-    }
     this.setState({ candidates: newCandidates, results: calculatedResults });
   };
 
