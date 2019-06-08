@@ -1,68 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Sukano Helper
+This is a helper for playing Sukano, a puzzle game that combines aspects from Sudoku, Kakuro, and Nonogram. 
+To learn more about how to play Sukano, [click here](http://sukano-puzzles.com/rules). 
+Note: this helper currently only works on desktop.
 
-## Available Scripts
+#### How to use the helper
 
-In the project directory, you can run:
+Enter candidates into the box. Press the + button to confirm the box and reveal the input for the next box. After clicking the + button, you will no longer be able to edit the submitted box. When you submit a box, the possible valid combinations of all the submitted boxes will be calculated and shown. 
 
-### `npm start`
+Valid combinations are combinations that do not contain duplicate values (i.e. a combination with two 3s is not valid). 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If none of the resulting combinations include a specific candidate in the box, the candidate will disappear from the input box. An example of this is if in box 1, the entered candidates are `[2, 3]` and box 2, the entered candidate is `[2]`, the 2 in box 1 will be eliminated.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+#### Using the filter
 
-### `npm test`
+A filter can be either a sum (sum of two or more numbers) or a single number. To add a filter, simply choose either sum or number from the dropdown and enter the number value, then press the "Add Filter" button. Filters will be applied in order. Filters will not be executed until you press the "Eliminate using filters" button.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For instance, entering a filter for a sum of 10 and then a number for 9 will eliminate combinations that do not meet the requirements of the first condition such as `[1, 2, 8]`, as well as combinations that do not meet the consequent filters `[2, 8, 5]`. Examples of a valid combination is `[3, 7, 9]` because 3 + 7 satisfies the first filter condition of a "sum of 10" and the following 9 satisfies the second filter condition of a "number 9". 
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Note: for sums, if a combination is less than the sum filter value, it will be included as a valid combination. For a sum filter of 10, if the combination is `[1, 2, 3]` it will not be eliminated. 
