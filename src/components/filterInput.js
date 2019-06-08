@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterInput = props => {
   return (
-    <div>
+    <div className="bottom-margin">
       <select onChange={props.handleFilterType} value={props.currFilterType}>
         <option value="sum">sum</option>
         <option value="number">number</option>

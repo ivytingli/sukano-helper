@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterTable = props => {
   return (
-    <div>
+    <div className="bottom-margin">
       <table>
         <thead>
           <tr>

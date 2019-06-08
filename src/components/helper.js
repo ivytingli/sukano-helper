@@ -207,12 +207,14 @@ class Helper extends React.Component {
   render() {
     return (
       <div>
-        <InputRow
-          candidates={this.state.candidates}
-          handleKeyPress={this.handleKeyPress}
-          handleNextBox={this.handleNextBox}
-          resetCandidates={this.resetCandidates}
-        />
+        <div>
+          <InputRow
+            candidates={this.state.candidates}
+            handleKeyPress={this.handleKeyPress}
+            handleNextBox={this.handleNextBox}
+            resetCandidates={this.resetCandidates}
+          />
+        </div>
         <div style={{ clear: "both" }}>
           <FilterInput
             currFilterType={this.state.currFilterType}
