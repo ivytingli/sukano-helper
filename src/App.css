@@ -31,3 +31,21 @@
     transform: rotate(360deg);
   }
 }
+
+.input-box {
+  width: 39px;
+  height: 39px;
+  background-color: transparent;
+  margin: 3px;
+}
+
+.input-cursor {
+  color: transparent;
+  position: relative;
+  border: 1px solid black;
+}
+
+.input-box-pos {
+  position: absolute;
+  z-index: -1;
+}
