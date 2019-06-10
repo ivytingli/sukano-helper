@@ -1,3 +1,5 @@
+http://sukano-helper.herokuapp.com 
+
 ### Sukano Helper
 This is a helper for playing Sukano, a puzzle game that combines aspects from Sudoku, Kakuro, and Nonogram. 
 To learn more about how to play Sukano, [click here](http://sukano-puzzles.com/rules). 
